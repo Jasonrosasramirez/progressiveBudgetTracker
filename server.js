@@ -19,6 +19,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
+
+
 /* -- connection with mongo atlas -- */
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nudget", {
     useNewUrlParser: true,
@@ -28,6 +30,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nudget", {
 
 /* -- routes -- */
 app.use(require("./routes/api.js"));
+
+
 
 
 /* -- Listing on Port 4000 -- */
