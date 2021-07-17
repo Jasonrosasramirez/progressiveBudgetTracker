@@ -3,7 +3,7 @@ let transactionArray = []; // to be populated every instance.
 let myChart;
 
 
-/* -- Define Functions -- */
+/* -- Basic Functions Defined -- */
 function populateThatTotal() {
     //.reduce .reduce(total, num) 
   let totalTransaction = transactions.reduce((total, num) => { // executes reducer function on each element of the array resulting in a singl output
@@ -16,8 +16,26 @@ function populateThatTotal() {
 
 
 function populateThatChart () {
+    // creating a chart. 
+    let dateMarker = map(t => {
+        let date = new Date(t.date);
+        // I create the stamps on the graph :D 
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+      });
+
+    let data = map(t => {
+        sum += parseInt(t.value); // passes a string and returns an integer. 
+        return sum;
+    });
+    
+    //I create the chart using resources defined above :D 
 
 
+
+
+    if (myChart) { // if the chart exits already
+        myChart.destroy(); // delete so we can update
+    }
 }
 
 
