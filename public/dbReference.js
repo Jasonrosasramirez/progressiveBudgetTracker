@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 let db; // will be referenced by another function 
 const request = window.indexedDB.open("budget", 1); 
 
@@ -44,11 +46,26 @@ function checkThatDatabase() {
   const getAll = budgetStore.getAll(); 
   console.log(getAll)
 
-
-
-
-
-} 
+  getAll.onsuccess = function() {
+    if (getAll.result.length > 0) {
+      fetch("/api/transaction/bulk", {
+        method: "POST", 
+        body: JSON.stringify(getAll.result), 
+        headers: {
+          Accept: "Application/json, text/plain, */*", "Content-Type": "application/json"
+        } 
+      })
+      .then((response) => response.json())
+      .then(() => {
+        db = request.result; 
+        const transaction = db.transaction(["budgetStore"], "readwrite");
+        const budgetStore = transaction.objectStore("budgetStore"); 
+        budgetStore.clear()
+        window.location.reload()
+      });
+    }
+  }
+};
 
 
 
