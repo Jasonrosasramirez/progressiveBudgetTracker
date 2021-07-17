@@ -1,24 +1,16 @@
 /* -- Basic imports -- */
 const express = require("express"); 
-const logger = require("morgan");
 const mongoose = require("mongoose");
-const compression = require("compression"); 
 
-const PORT = process.env.PORT || 4000; 
+const PORT = process.env.PORT || 4000; // very important to include the process.env.PORT to allow new sessions 
 const app = express(); 
-require("dotenv").config(); // references the .env file
 
 
 /* -- utilizing the app -- */
-app.use(logger("dev"));
-
-app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
-
-
 
 
 /* -- connection with mongo atlas -- */
