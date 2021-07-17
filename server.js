@@ -9,7 +9,6 @@ const app = express();
 /* -- utilizing the app -- */
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
 
@@ -22,8 +21,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nudget", {
 
 /* -- routes -- */
 app.use(require("./routes/api.js"));
-
-
 
 
 /* -- Listing on Port 4000 -- */
