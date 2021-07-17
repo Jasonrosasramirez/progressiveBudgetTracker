@@ -67,8 +67,11 @@ function populateThatTable() {
 }
 
 
-function sendTransaction() {
-
+function sendTransaction(isAddingBool) {
+    // updates the DOM
+    let nameEl = document.querySelector("#t-name");
+    let amountEl = document.querySelector("#t-amount");
+    let errorEl = document.querySelector(".form .error");
 
 
 
