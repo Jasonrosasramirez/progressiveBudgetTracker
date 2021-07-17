@@ -73,6 +73,35 @@ function sendTransaction(isAddingBool) {
     let amountEl = document.querySelector("#t-amount");
     let errorEl = document.querySelector(".form .error");
 
+    // validating the user form
+    if (nameEl.value === "" || amountEl.value === "") {
+        errorEl.textContent = "Information is missing";
+        return;
+    }
+    else {
+        errorEl.textContent = "";
+    }
+
+    // create record
+    let transaction = {
+        name: nameEl.value,
+        value: amountEl.value,
+        date: new Date().toISOString()
+    };
+
+    // if the user decides to withdraw money
+    if (!isAddingBool) {
+        transaction.value *= -1;
+    }
+
+    transactionArray.unshift(transactionArray); // updates the transaction 
+
+    // run the functions above
+    populateChart();
+    populateTable();
+    populateTotal();
+
+
 
 
 }
