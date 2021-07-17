@@ -66,41 +66,21 @@ function populateThatTable() {
     });
 }
 
-function sendServer(transactionArray, nameEl, amountEl, errorEl) {
-    fetch("/api/transaction", {
-        method: "POST",
-        body: JSON.stringify(transactionArray),
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => {    
-        return response.json();
-      })
-      .then(data => {
-        if (data.errors) {
-          errorEl.textContent = "Information is missing";
-        }
-        else {
-          // clear form
-          nameEl.value = "";
-          amountEl.value = "";
-        }
-      })
-      .catch(err => {
-        // fetch failed, so save in indexed db
-        saveRecord(transactionArray);
-    
-        // clear form
-        nameEl.value = "";
-        amountEl.value = "";
-      });
-
-}
-
 
 /* -- initiate functions -- */
+fetch("/api/transaction")
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        transactions = data;
+
+        populateThatTotal();
+        populateThatChart();
+        populateThatTable();
+    });
+
+
 function sendTransaction(isAddingBool) {
     // updates the DOM
     let nameEl = document.querySelector("#t-name");
@@ -136,21 +116,34 @@ function sendTransaction(isAddingBool) {
     populateTotal();
 
     // also send to server
-    sendServer(transactionArray, nameEl, amountEl, errorEl);
-}
-
-
-fetch("/api/transaction")
-    .then(response => {
+    fetch("/api/transaction", {
+        method: "POST",
+        body: JSON.stringify(transactionArray), // converts values to the strings. 
+        headers: {
+          Accept: "application/json, text/plain, */*", "Content-Type": "application/json"
+        }
+      })
+      .then(response => {    
         return response.json();
-    })
-    .then(data => {
-        transactions = data;
-
-        populateThatTotal();
-        populateThatChart();
-        populateThatTable();
-    });
+      })
+      .then(data => {
+        if (data.errors) {
+          errorEl.textContent = "Information is missing. We'll look again.";
+        }
+        else {
+          // replaces active text with blank spaces. Acts as a clearing method
+          nameEl.value = ""; // edits the DOM content. 
+          amountEl.value = "";
+        }
+      })
+      .catch(err => { // if there is an error that happens
+        saveRecord(transactionArray);
+    
+        // replaces active text with blank spaces. Acts as a clearing method
+        nameEl.value = ""; // edits the DOM content.
+        amountEl.value = "";
+      });
+}
 
 
 /* -- Navigate the DOM --*/
