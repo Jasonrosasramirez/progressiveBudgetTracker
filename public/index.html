@@ -24,11 +24,30 @@
 
 
     <!--Center of the Page -->
-    <div class = "centerPage">
+    <div div class = "centerPage">
+        
+        <!-- form submission -->
+        <div class = "form">
+            <!-- user inputs the form -->
+            <h3>Hello! I am the form</h3>
+
+        </div>
 
 
+        <!-- The actual table-->
+        <div class = "transactions">
+            <table>
+                <thead> <!-- Table headers -->
+                    <th> Transaction </th>
+                    <th> Amount ($) </th>
+                </thead>
 
+                <tbody id = "tbody">  </tbody> <!-- Will be updated through the populateThatTable() function -->
+            </table>
+        </div>
     </div>
+
+    
 
 
     <!--Bottom of the Page -->
@@ -37,6 +56,11 @@
     </footer>
 
 
+
+    <!-- Imports the scripts -->
+    <script src = "/public/script.js"> </script>
+    <script src = "/public/dbReference.js"> </script>
+        
 </body>
 
 
