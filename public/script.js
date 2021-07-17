@@ -66,7 +66,41 @@ function populateThatTable() {
     });
 }
 
+function sendServer(transactionArray, nameEl, amountEl, errorEl) {
+    fetch("/api/transaction", {
+        method: "POST",
+        body: JSON.stringify(transactionArray),
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => {    
+        return response.json();
+      })
+      .then(data => {
+        if (data.errors) {
+          errorEl.textContent = "Information is missing";
+        }
+        else {
+          // clear form
+          nameEl.value = "";
+          amountEl.value = "";
+        }
+      })
+      .catch(err => {
+        // fetch failed, so save in indexed db
+        saveRecord(transactionArray);
+    
+        // clear form
+        nameEl.value = "";
+        amountEl.value = "";
+      });
 
+}
+
+
+/* -- initiate functions -- */
 function sendTransaction(isAddingBool) {
     // updates the DOM
     let nameEl = document.querySelector("#t-name");
@@ -101,13 +135,11 @@ function sendTransaction(isAddingBool) {
     populateTable();
     populateTotal();
 
-
-
-
+    // also send to server
+    sendServer(transactionArray, nameEl, amountEl, errorEl);
 }
 
 
-/* -- Initiate Actions -- */
 fetch("/api/transaction")
     .then(response => {
         return response.json();
@@ -121,8 +153,14 @@ fetch("/api/transaction")
     });
 
 
-
-
+/* -- Navigate the DOM --*/
+document.querySelector("#add-btn").onclick = function() {
+    sendTransaction(true);
+};
+  
+document.querySelector("#sub-btn").onclick = function() {
+    sendTransaction(false);
+};
 
 
 
