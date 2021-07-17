@@ -29,10 +29,22 @@ function populateThatChart () {
     });
     
     //I create the chart using resources defined above :D 
+    let context = document.getElementById("myChart").getContext("2d"); // plotted by the chart
 
-
-
-
+    myChart = new Chart(context, {
+        //sets the properties of the charts 
+        type: "line",
+            data: {
+                labels,
+                datasets: [{
+                    label: "Total Vs. Time",
+                    fill: true,
+                    backgroundColor: "#3f5ab0", // a nice blue color :D 
+                    data
+                }]
+            }
+    });
+  
     if (myChart) { // if the chart exits already
         myChart.destroy(); // delete so we can update
     }
@@ -52,6 +64,14 @@ function populateThatTable() {
 
         tableBody.appendChild(tableRow);
     });
+}
+
+
+function sendTransaction() {
+
+
+
+
 }
 
 
