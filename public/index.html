@@ -32,15 +32,19 @@
         
         <!-- form submission -->
         <div class = "form centerME">
-            <!-- user inputs the form -->
-            <h3>Hello! I am the form</h3>
-
+            <h3>What will it be today?</h3>
+            <!-- form display code below -->
+            <input type="text" id="t-name" placeholder="Transaction Title" />
+            <input type="number" min="0" id="t-amount" placeholder="Transaction amount ($)" />
+            <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
+            <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
+            <p class="error"></p>
         </div>
 
 
         <!-- The actual table-->
         <div class = "transactions centerME">
-            <h3> Here goes the table </h3>
+            <h3> Transaction History </h3>
             <table>
                 <thead> <!-- Table headers -->
                     <th> Transaction </th>
@@ -58,7 +62,7 @@
 
     <!--Bottom of the Page -->
     <footer> 
-        <H1> Hello! I am a footer </H1>
+        <H1> Track your money on - and offline </H1>
     </footer>
 
 
