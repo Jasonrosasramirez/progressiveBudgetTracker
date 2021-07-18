@@ -52,17 +52,17 @@ function populateThatChart () {
 
 
 function populateThatTable() {
-    let tableBody = document.querySelector("#tbody");
-        tableBody.innerHTML = "";
+    let tbody = document.querySelector("#tbody");
+    tbody.innerHTML = "";
 
     transactions.forEach(transaction => {
-        let tableRow = document.createElement("tr");
+        let tr = document.createElement("tr");
         tr.innerHTML = `
         <td>${transaction.name}</td>
         <td>${transaction.value}</td>
         `;
 
-        tableBody.appendChild(tableRow);
+        tbody.appendChild(tr);
     });
 }
 
@@ -143,10 +143,10 @@ function sendTransaction(isAddingBool) {
         nameEl.value = ""; // edits the DOM content.
         amountEl.value = "";
       });
-}
+} // is triggered when the add-btn is clicked
 
 
-/* -- Navigate the DOM --*/
+/* -- Navigate the DOM. Add Subtract button clicks --*/
 document.querySelector("#add-btn").onclick = function() {
     sendTransaction(true);
 };
