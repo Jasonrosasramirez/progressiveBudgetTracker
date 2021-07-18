@@ -1,0 +1,27 @@
+.jumbotron {
+    height: 100px;
+    min-width: 585px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 4px solid black;
+    padding-top: 4px;
+}
+
+
+.centerME {
+    text-align: center;
+}
+
+table, 
+thead, th {
+    border: 1px solid black;
+
+}
+
+
+
+footer {
+    border-top: 4px solid black;
+    display: flex;
+    justify-content: center;
+}
