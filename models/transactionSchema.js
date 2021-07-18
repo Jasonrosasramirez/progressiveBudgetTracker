@@ -13,11 +13,6 @@ const schemaTemplate = new Schema({
             required: "Hello There! What is the transaction for? " 
         }, 
 
-        action: {
-            type: Boolean, 
-            required: "Is this a withdrawal? "
-        },
-
         amount: {
             type: Number, 
             required: "How much will it be today? " 
