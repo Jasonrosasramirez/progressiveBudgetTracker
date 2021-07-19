@@ -13,8 +13,10 @@ app.use(express.static("public"));
 
 
 /* -- connection with mongo atlas -- */
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nudget", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pwabud", {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
     useFindAndModify: false
 }); 
 
