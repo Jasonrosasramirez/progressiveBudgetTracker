@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 const FILES_TO_CACHE = [
@@ -49,6 +51,19 @@ self.addEventListener("fetch", function (evt) {
 
   evt.respondWith(
     
+    fetch(evt.request).catch(() => {
+      return caches.match(evt.request)
+      .then(res => {
+        if(res) {
+          return res
+        }
+        elseif(evt.request.headers.get("accept").includes("text/html"))
+        {
+          return caches.match("/")
+        }
+      })
+    })
+
     // caches.open(CACHE_NAME).then(cache => {
     //   return cache.match(evt.request).then(response => {
     //     return response || fetch(evt.request);

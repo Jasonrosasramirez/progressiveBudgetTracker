@@ -1,0 +1,27 @@
+{
+  "name": "19-budgettracker",
+  "version": "1.0.0",
+  "description": "Traveling can feel like it zips by you. That's why it is important to keep track of your budget while you're experiencing life! Your online budget tracker will works offline, keeping a running total of your balance for those distant lands. Once reconnected online, everything will sync up and get you back on track.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongojs": "^3.1.0",
+    "mongoose": "^5.12.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jasonrosasramirez/progressiveBudgetTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jasonrosasramirez/progressiveBudgetTracker/issues"
+  },
+  "homepage": "https://github.com/Jasonrosasramirez/progressiveBudgetTracker#readme"
+}
