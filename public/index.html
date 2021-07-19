@@ -1,85 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#317EFB">
+  <link rel="shortcut icon" href="icons/icon-192x192.png" type="image/x-icon">
 
-    <!-- Styling Options -->
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
-    <!-- Google FOnts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
 
-    <title> Budget Tracker </title>
+  <title>Budget Tracker</title>
 </head>
-
-
 <body>
-    <!--Top of the Page -->
-    <header class = "jumbotron"> 
-        <h1>Budget Tracker</h1>
-    </header>
-    
-    
-    <div class = "total centerME">
-        <!-- populated with populateThatTotal. -->
-        <h1>Your current balance is | $<span id = "total">0</span> </h1>
-    </div>
-    
-
-
-    <!--Center of the Page -->
-    <div div class = "centerPage centerME">
-        
-        <!-- form submission -->
-        <div class = "form centerME">
-            <h3>What will it be today?</h3>
-            <!-- form display code below -->
-            <input type="text" id="t-name" placeholder="Transaction Title" />
-            <input type="number" min="0" id="t-amount" placeholder="Transaction amount ($)" />
-            <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
-            <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
-            <p class="error"></p>
-        </div>
-
-
-        <!-- The actual table-->
-        <div class = "transactions centerME">
-            <h3> Transaction History </h3>
-            <table>
-                <thead> <!-- Table headers -->
-                    <th> Transaction </th>
-                    <th> Amount ($) </th>
-                </thead>
-
-                <tbody id = "tbody">  
-                    <!-- Will be updated through the populateThatTable() function -->
-                </tbody> 
-            </table>
-        </div>
-
-        <canvas id = "myChart"> <!-- Where the chart is displayed --> </canvas>
+  <div class="wrapper">
+    <div class="total">
+      <div class="total">Your total is: $<span id="total">0</span></div>
     </div>
 
+    <div class="form">
+      <input type="text" id="t-name" placeholder="Name of transaction" />
+      <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
+      <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
+      <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
+      <p class="error"></p>
+    </div>
+
+    <div class="transactions">
+      <table>
+        <thead>
+          <th>Transaction</th>
+          <th>Amount</th>
+        </thead>
+        <tbody id="tbody">
+          
+        </tbody>
+      </table>
+    </div>
     
+    <canvas id="myChart"></canvas>
+  </div>
 
-    <!--Bottom of the Page -->
-    <footer> 
-        <H1> Track your money on - and offline </H1>
-    </footer>
-
-
-
-    <!-- Imports the scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src = "/public/script.js"> </script>
-    <script src = "/public/dbReference.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="/index.js"></script>
+  <script src = "dbReference.js"> </script>
 </body>
-
-
 </html>

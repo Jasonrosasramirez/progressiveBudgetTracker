@@ -38,7 +38,7 @@ function saveRecord(record) {
 };
 
 
-function checkThatDatabase() {
+function checkDatabase() {
   db = request.result; // defining the db variable from earlier. Let will be a different instance every session. 
   
   const transaction = db.transaction(["budgetStore"], "readWrite"); 
@@ -52,7 +52,7 @@ function checkThatDatabase() {
         method: "POST", 
         body: JSON.stringify(getAll.result), 
         headers: {
-          Accept: "Application/json, text/plain, */*", "Content-Type": "application/json"
+          Accept: "application/json, text/plain, */*", "Content-Type": "application/json"
         } 
       })
       .then((response) => response.json())
@@ -67,6 +67,7 @@ function checkThatDatabase() {
   }
 };
 
-
+// listening for the app to come back online. 
+window.addEventListener("online", checkDatabase)
 
 
