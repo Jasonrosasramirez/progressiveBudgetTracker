@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 
 /* -- connection with mongo atlas -- */
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pwabud", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pwabudgettrackerjason", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
