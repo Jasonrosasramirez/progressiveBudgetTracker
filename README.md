@@ -29,7 +29,7 @@ THEN that will be shown on the page, and added to their transaction history when
 
 * You are required to submit the following:
 
-  * [URL to the deployed application.](https://heroku.com/) 
+  * [URL to the deployed application.](https://git.heroku.com/pwabudgettrackerjason.git) 
 
   * [URL to the github repo.](https://github.com/Jasonrosasramirez/progressiveBudgetTracker)
 
