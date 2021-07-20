@@ -21,7 +21,7 @@ When brought back online:
 
   * [Screenshot of Deployed Page.](/public/icons/screenshot.JPG)
 
-  * [URL to the deployed application.](https://git.heroku.com/pwabudgettrackerjason.git) 
+  * [URL to the deployed application.](https://pwabudgettrackerjason.herokuapp.com/) 
 
   * [URL to the github repo.](https://github.com/Jasonrosasramirez/progressiveBudgetTracker)
 
