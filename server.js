@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const compression = require("compression");
 
 const PORT = process.env.PORT || 4000; // very important to include the process.env.PORT to allow new sessions 
+
 const app = express(); 
 
 app.use(logger("dev"));
@@ -17,7 +18,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 /* -- connection with mongo atlas -- */
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pwabudgettrackerjason", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
