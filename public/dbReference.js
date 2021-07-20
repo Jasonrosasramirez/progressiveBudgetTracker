@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 let db; // will be referenced by another function 
 const request = window.indexedDB.open("budget", 1); 
 
@@ -15,7 +13,7 @@ request.onsuccess = function (event) {
 
 request.onupgradeneeded = function(event) { // onupgradeneeded is an event handler when the database version is increased. 
   const db = event.target.result; // defining the event 
-  db.createObjectStore("budgetStore", {
+  const budgetStore = db.createObjectStore("budgetStore", {
     autoIncrement: true
   }); 
   budgetStore.createIndex("budgetIndex", "budgetIndex");

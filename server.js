@@ -1,16 +1,20 @@
 /* -- Basic imports -- */
 const express = require("express"); 
+const logger = require("morgan");
 const mongoose = require("mongoose");
+const compression = require("compression");
 
 const PORT = process.env.PORT || 4000; // very important to include the process.env.PORT to allow new sessions 
 const app = express(); 
 
+app.use(logger("dev"));
 
 /* -- utilizing the app -- */
+app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
 
+app.use(express.static("public"));
 
 /* -- connection with mongo atlas -- */
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pwabudgettrackerjason", {
