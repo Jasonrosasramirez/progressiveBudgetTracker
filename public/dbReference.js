@@ -3,20 +3,20 @@ const request = window.indexedDB.open("budget", 1);
 
 
 /* -- send that request -- */
+request.onupgradeneeded = function(event) { // onupgradeneeded is an event handler when the database version is increased. 
+  db = event.target.result; // defining the event 
+  const budgetStore = db.createObjectStore("budgetStore", {
+    autoIncrement: true
+  }); 
+  budgetStore.createIndex("budgetIndex", "budgetIndex");
+};
+
+
 request.onsuccess = function (event) {
   db = event.target.result;
   if (navigator.onLine) {
     checkDatabase();
   }
-};
-
-
-request.onupgradeneeded = function(event) { // onupgradeneeded is an event handler when the database version is increased. 
-  const db = event.target.result; // defining the event 
-  const budgetStore = db.createObjectStore("budgetStore", {
-    autoIncrement: true
-  }); 
-  budgetStore.createIndex("budgetIndex", "budgetIndex");
 };
 
 
@@ -39,7 +39,7 @@ function saveRecord(record) {
 function checkDatabase() {
   db = request.result; // defining the db variable from earlier. Let will be a different instance every session. 
   
-  const transaction = db.transaction(["budgetStore"], "readWrite"); 
+  const transaction = db.transaction(["budgetStore"], "readwrite"); 
   const budgetStore = transaction.objectStore("budgetStore"); 
   const getAll = budgetStore.getAll(); 
   console.log(getAll)
