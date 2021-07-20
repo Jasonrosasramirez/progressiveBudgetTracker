@@ -1,5 +1,6 @@
 const { response } = require("express");
 
+/* -- what to CACHE -- */
 const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 const FILES_TO_CACHE = [
@@ -12,6 +13,7 @@ const FILES_TO_CACHE = [
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png"
 ];
+
 
 // install
 self.addEventListener("install", function (evt) {
@@ -49,8 +51,7 @@ self.addEventListener("fetch", function (evt) {
     return;
   }
 
-  evt.respondWith(
-    
+  evt.respondWith(    
     fetch(evt.request).catch(() => {
       return caches.match(evt.request)
       .then(res => {
@@ -63,11 +64,5 @@ self.addEventListener("fetch", function (evt) {
         }
       })
     })
-
-    // caches.open(CACHE_NAME).then(cache => {
-    //   return cache.match(evt.request).then(response => {
-    //     return response || fetch(evt.request);
-    //   });
-    // })
   );
 });

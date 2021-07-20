@@ -2,11 +2,11 @@ let db; // will be referenced by another function
 const request = window.indexedDB.open("budget", 1); 
 
 
-/* -- send that request -- */
+/* -- requests -- */
 request.onupgradeneeded = function(event) { // onupgradeneeded is an event handler when the database version is increased. 
   db = event.target.result; // defining the event 
-  const budgetStore = db.createObjectStore("budgetStore", {
-    autoIncrement: true
+  const budgetStore = db.createObjectStore("budgetStore", { // creating object per event 
+    autoIncrement: true // updating per event 
   }); 
   budgetStore.createIndex("budgetIndex", "budgetIndex");
 };
@@ -66,6 +66,6 @@ function checkDatabase() {
 };
 
 // listening for the app to come back online. 
-window.addEventListener("online", checkDatabase)
+window.addEventListener("online", checkDatabase) // this is what updates when the operator moves back online
 
 
